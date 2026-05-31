@@ -1,6 +1,6 @@
 <div align="center">
 
-# Hi, I'm Hiten Raju 👋
+# Hi, I'm Hiten👋
 
 **Software Engineer · MS CS @ USC · Building things that scale**
 
