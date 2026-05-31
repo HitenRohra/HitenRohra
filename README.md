@@ -134,8 +134,6 @@ Currently pursuing my **Master's in CS at USC** (Aug 2025 – May 2027), doublin
 
 <div align="center">
 
-![Hiten's GitHub stats](https://github-readme-stats.vercel.app/api?username=HitenRohra&show_icons=true&theme=github_dark&hide_border=true&count_private=true)
-
 ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=HitenRohra&layout=compact&theme=github_dark&hide_border=true)
 
 ![GitHub Streak](https://streak-stats.demolab.com?user=HitenRohra&theme=github-dark-blue&hide_border=true)
