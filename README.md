@@ -130,13 +130,7 @@ Currently pursuing my **Master's in CS at USC** (Aug 2025 – May 2027), doublin
 
 ---
 
-## 📊 GitHub Stats
-
-<div align="center">
-
-![GitHub Streak](https://streak-stats.demolab.com?user=HitenRohra&theme=github-dark-blue&hide_border=true)
-
-</div>
+![Snake eating contributions](https://raw.githubusercontent.com/HitenRohra/HitenRohra/output/github-contribution-grid-snake-dark.svg)
 
 ---
 
