@@ -129,7 +129,7 @@ Currently pursuing my **Master's in CS at USC** (Aug 2025 – May 2027), doublin
 `MongoDB` `Express` `React` `Node.js` `Socket.IO`
 
 ---
-
+## 🐍 Snake eating my contributions
 ![Snake eating contributions](https://raw.githubusercontent.com/HitenRohra/HitenRohra/output/github-contribution-grid-snake-dark.svg)
 
 ---
