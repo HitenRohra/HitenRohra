@@ -58,8 +58,13 @@ ROW_DELAY = 0.09           # per-row stagger, seconds
 FAMILY = "ui-monospace,SFMono-Regular,Menlo,Consolas,monospace"
 
 
-def prep(path, crop=None):
-    """Cut out the background, even the local contrast, then darken."""
+def prep(path, crop=None, curve=CURVE, clahe=CLAHE_CLIP):
+    """Cut out the background, even the local contrast, then darken.
+
+    curve is the one parameter worth sweeping. 1.7 suits a fair, side-lit face;
+    a darker subject or flatter light needs less, or the whole face collapses
+    into a solid block of @ with no features left in it.
+    """
     src = Image.open(path).convert("RGBA")
     if crop:
         src = src.crop(crop)
@@ -73,9 +78,9 @@ def prep(path, crop=None):
     gray = np.array(Image.alpha_composite(white, cut).convert("L"))
 
     gray = cv2.bilateralFilter(gray, 11, 50, 50)      # smooth skin, keep edges
-    gray = cv2.createCLAHE(clipLimit=CLAHE_CLIP,
+    gray = cv2.createCLAHE(clipLimit=clahe,
                            tileGridSize=(8, 8)).apply(gray)
-    gray = (255.0 * (gray / 255.0) ** CURVE).astype("uint8")
+    gray = (255.0 * (gray / 255.0) ** curve).astype("uint8")
     gray[alpha < 20] = 255                            # force the matte to white
     return Image.fromarray(gray)
 
@@ -152,6 +157,12 @@ def main():
                                    "tight to the head so the whole grid goes to "
                                    "the face")
     ap.add_argument("--cols", type=int, default=COLS)
+    ap.add_argument("--curve", type=float, default=CURVE,
+                    help="darkening exponent; lower it if the face comes out "
+                         "as a solid block, raise it if it looks washed out")
+    ap.add_argument("--clahe", type=float, default=CLAHE_CLIP,
+                    help="local contrast clip; above ~4 skin texture turns "
+                         "into noise")
     ap.add_argument("--preview", action="store_true",
                     help="print the ASCII to the terminal as well")
     args = ap.parse_args()
@@ -163,7 +174,8 @@ def main():
             sys.exit("--crop needs four numbers: left,top,right,bottom")
         crop = tuple(parts)
 
-    lines = to_lines(prep(args.photo, crop), cols=args.cols)
+    lines = to_lines(prep(args.photo, crop, args.curve, args.clahe),
+                     cols=args.cols)
     if args.preview:
         print("\n".join(lines))
 
