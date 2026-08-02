@@ -8,6 +8,18 @@ Run it once; it is not on a schedule, unlike scripts/generate_stats.py.
     python3 scripts/make_portrait.py photo.png --crop 400,110,910,790
     python3 scripts/embed_portrait_font.py      # inline the font, see below
 
+The ascii.svg checked in here was produced by, from a 1600x1600 headshot:
+
+    python3 scripts/make_portrait.py headshot.jpg \
+        --crop 490,200,1130,965 --curve 0.9 --clahe 2.0
+    python3 scripts/embed_portrait_font.py
+
+0.9 rather than the default 1.7 because the subject has black hair and the
+light is close to frontal: at 1.7 the whole head came out as one block of @
+with no eyes, brows or mouth left in it. At 1.1 the hair reads well but the
+eye sockets start to fill in. 0.9 keeps the hair a solid mass and the
+features legible, which is the trade the ramp actually forces.
+
 The first run downloads a ~176 MB background-removal model, once.
 
 Two things decide whether the output is any good, and neither is a parameter:
