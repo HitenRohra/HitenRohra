@@ -99,13 +99,18 @@ def font_head():
 # Every letter here must exist in fonts/jbmono-head.woff2 — that subset covers
 # " abcehjklnoprstu" and nothing else. Adding a word with a new letter means
 # regenerating the subset (see fonts/README.md), or it silently falls back.
-HEADINGS = ("about", "stack", "projects", "stats", "colophon")
+HEADINGS = ("about", "stack", "projects", "stats")
 
 WIDTH = 620            # every graphic shares one column width
 LEFT = 34              # shared left inset, so stacked blocks line up
                        # (year.svg needs it for the weekday gutter)
 REVEAL = 1.30          # seconds; matches the portrait's cadence
-RAMP = [" ", ":", "+", "#", "@"]      # steps of the portrait's own ramp
+RAMP = [" ", ":", "+", "#", "@"]      # quiet -> loud; index 0 draws nothing
+EMPTY = "·"                      # a day with no contributions. A middle
+                                      # dot, not a period: it sits centred in
+                                      # the cell, where a period drops to the
+                                      # baseline and makes every row look
+                                      # bottom-heavy.
 MON = ["jan", "feb", "mar", "apr", "may", "jun",
        "jul", "aug", "sep", "oct", "nov", "dec"]
 
@@ -422,14 +427,17 @@ def draw_year(s):
 
     # ramp legend, so the encoding is never carried by shade alone
     lx = WIDTH - 6
-    # Width the gap from the ramp itself, or adding a step to it runs the last
-    # character straight into "more".
-    ramp_key = " ".join(["."] + RAMP[1:])
-    key_w = len(ramp_key) * FS * 0.6
+    # Width the gap from the key itself, or adding a step to it runs the last
+    # character straight into "more". The empty step is drawn in the same
+    # faint ink it has in the grid, so the key matches what it describes.
+    ramp_key = " ".join(RAMP[1:])
+    key_w = (len(ramp_key) + 2) * CW
     key_x = lx - 30 - key_w
     p.append(f'<g opacity="0">{fade(1.30)}'
              + label(key_x - 6, 32, "less", 9, "m-f", "end")
              + f'<text xml:space="preserve" x="{key_x:.1f}" y="32" '
+             f'class="q" font-size="{FS}">{EMPTY}</text>'
+             + f'<text xml:space="preserve" x="{key_x + 2 * CW:.1f}" y="32" '
              f'class="d-f" font-size="{FS}">{ramp_key}</text>'
              + label(lx, 32, "more", 9, "m-f", "end") + '</g>')
 
@@ -448,8 +456,12 @@ def draw_year(s):
                 data.append(" " * COLW)
                 continue
             lv = level(day["contributionCount"])
-            grid.append(("." if lv == 0 else " ") + " " * (COLW - 1))
-            data.append(RAMP[lv] * COLW)
+            # One glyph per day plus a space, so a cell is always the same
+            # shape. Filling the whole COLW-wide cell instead ran adjacent
+            # active days together into a bar and made them read wider than
+            # the empty cells they sit next to.
+            grid.append((EMPTY if lv == 0 else " ") + " " * (COLW - 1))
+            data.append(RAMP[lv] + " " * (COLW - 1))
         gline = "".join(grid).rstrip()
         dline = "".join(data).rstrip()
         if not gline and not dline:

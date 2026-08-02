@@ -58,16 +58,3 @@ A Cursor-shaped coding assistant that never leaves the terminal.
 
 </div>
 
-<img src="./hd-colophon.svg" width="620" alt="colophon"/>
-
-Every graphic here is drawn by this repository, straight from the GitHub<br>
-GraphQL API by [a scheduled action](.github/workflows/stats.yml), once a day, committing only what<br>
-changed. Nothing loads from anyone else's server, so nothing here can<br>
-rate-limit or go dark.
-
-They animate with SMIL from inside the SVG, and the headings are images,<br>
-because GitHub strips both `<script>` and CSS from READMEs. Type is<br>
-[JetBrains Mono](scripts/fonts), subset per graphic and inlined as base64. Language<br>
-totals cover public repositories only.
-
-<sub>Built by following <a href="https://agreeable-credit-859.notion.site/A-GitHub-profile-that-generates-itself-3abedfe9a65a81e4afc9daed90cb4e7e">A GitHub profile that generates itself</a> by <a href="https://github.com/andriidrok1">Andrii Drok</a>.</sub>

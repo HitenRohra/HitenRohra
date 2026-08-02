@@ -32,8 +32,8 @@ import urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = os.path.join(ROOT, "preview-frozen")
-GRAPHICS = ("ascii", "stats", "streak", "langs", "year",
-            "hd-about", "hd-stack", "hd-projects", "hd-stats", "hd-colophon")
+GRAPHICS = ("stats", "streak", "langs", "year",
+            "hd-about", "hd-stack", "hd-projects", "hd-stats")
 
 
 def freeze(svg):
