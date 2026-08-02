@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="./ascii.svg" width="460" alt="Hiten Rohra"/>
-
 <img src="./stats.svg" width="620" alt="Contributions in the last year"/>
 
 [hitenraju.com](https://hitenraju.com) &nbsp;·&nbsp;
@@ -62,27 +60,14 @@ A Cursor-shaped coding assistant that never leaves the terminal.
 
 <img src="./hd-colophon.svg" width="620" alt="colophon"/>
 
-Nothing on this page loads from anyone else's server. `ascii.svg` is a photo<br>
-pushed through a 13-character ramp by<br>
-[`scripts/make_portrait.py`](scripts/make_portrait.py); the stat graphics and<br>
-these section headings are drawn straight from the GitHub GraphQL API by<br>
-[a scheduled action](.github/workflows/stats.yml), once a day, committing only<br>
-the files that actually changed.
+Every graphic here is drawn by this repository, straight from the GitHub<br>
+GraphQL API by [a scheduled action](.github/workflows/stats.yml), once a day, committing only what<br>
+changed. Nothing loads from anyone else's server, so nothing here can<br>
+rate-limit or go dark.
 
-Everything animates with SMIL from inside the SVG, because GitHub strips<br>
-`<script>` from READMEs. The headings are images for the same reason — GitHub<br>
-also strips CSS, so an image is the only way to put this page's own typeface<br>
-on a heading. Since no third party is involved, nothing here can rate-limit,<br>
-break, or quietly go dark.
-
-The face is [JetBrains Mono](scripts/fonts), subset to just the characters<br>
-each graphic draws and inlined as base64 — about 12 KB across the page rather<br>
-than 4.5 MB. That isn't only for looks: the portrait's grid assumes an advance<br>
-width of exactly 0.600 em, and a viewer whose default monospace is narrower<br>
-would otherwise see the whole thing squeezed.
-
-Language totals cover public repositories only, so the numbers don't depend on<br>
-whose token ran the script. `year.svg` reuses the portrait's own ramp —<br>
-`:` `+` `#` `@`, quiet to loud.
+They animate with SMIL from inside the SVG, and the headings are images,<br>
+because GitHub strips both `<script>` and CSS from READMEs. Type is<br>
+[JetBrains Mono](scripts/fonts), subset per graphic and inlined as base64. Language<br>
+totals cover public repositories only.
 
 <sub>Built by following <a href="https://agreeable-credit-859.notion.site/A-GitHub-profile-that-generates-itself-3abedfe9a65a81e4afc9daed90cb4e7e">A GitHub profile that generates itself</a> by <a href="https://github.com/andriidrok1">Andrii Drok</a>.</sub>

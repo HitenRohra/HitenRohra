@@ -227,9 +227,11 @@ def style(extra="", font=None):
                 f".e-f{{fill:{t['emph']}}}.m-f{{fill:{t['dim']}}}"
                 f".u-s{{stroke:{t['rule']}}}.r{{stroke:{t['surface']}}}")
     return (f"<style>{font or font_text()}"
-            f"{block(LIGHT)}.w{{fill:{LIGHT['data']};opacity:.13}}{extra}"
+            f"{block(LIGHT)}.w{{fill:{LIGHT['data']};opacity:.13}}"
+            f".q{{fill:{LIGHT['data']};opacity:.28}}{extra}"
             f"@media(prefers-color-scheme:dark){{{block(DARK)}"
-            f".w{{fill:{DARK['data']};opacity:.16}}}}</style>")
+            f".w{{fill:{DARK['data']};opacity:.16}}"
+            f".q{{fill:{DARK['data']};opacity:.28}}}}</style>")
 
 
 def head(w, h, font=None):
@@ -420,33 +422,55 @@ def draw_year(s):
 
     # ramp legend, so the encoding is never carried by shade alone
     lx = WIDTH - 6
+    # Width the gap from the ramp itself, or adding a step to it runs the last
+    # character straight into "more".
+    ramp_key = " ".join(["."] + RAMP[1:])
+    key_w = len(ramp_key) * FS * 0.6
+    key_x = lx - 30 - key_w
     p.append(f'<g opacity="0">{fade(1.30)}'
-             + label(lx - 78, 32, "less", 9, "m-f", "end")
-             + f'<text xml:space="preserve" x="{lx - 72}" y="32" class="d-f" '
-             f'font-size="{FS}">{" ".join(RAMP[1:])}</text>'
+             + label(key_x - 6, 32, "less", 9, "m-f", "end")
+             + f'<text xml:space="preserve" x="{key_x:.1f}" y="32" '
+             f'class="d-f" font-size="{FS}">{ramp_key}</text>'
              + label(lx, 32, "more", 9, "m-f", "end") + '</g>')
 
     for r in range(7):
-        chars = []
+        # Two overlaid runs. A quiet year is mostly zeroes, and drawing those
+        # as blank space leaves the characters floating with no grid to read
+        # them against — so every real day gets a faint dot, and only days
+        # with contributions get a ramp character on top. A day the calendar
+        # doesn't cover (the partial weeks at either end) gets neither, which
+        # is what distinguishes "outside the window" from "nothing that day".
+        grid, data = [], []
         for w in weeks:
             day = next((d for d in w if d.get("weekday") == r), None)
-            v = day["contributionCount"] if day else 0
-            chars.append(RAMP[level(v)] * COLW)
-        line = "".join(chars).rstrip()
-        if not line:
+            if day is None:
+                grid.append(" " * COLW)
+                data.append(" " * COLW)
+                continue
+            lv = level(day["contributionCount"])
+            grid.append(("." if lv == 0 else " ") + " " * (COLW - 1))
+            data.append(RAMP[lv] * COLW)
+        gline = "".join(grid).rstrip()
+        dline = "".join(data).rstrip()
+        if not gline and not dline:
             continue
         y = pad_t + r * LH
-        w_px = max(len(line), 1) * CW
+        w_px = max(len(gline), len(dline), 1) * CW
         cid = f"ry{r}"
         delay = 0.30 + r * 0.07
         p.append(f'<clipPath id="{cid}"><rect x="{pad_l}" y="{y}" '
                  f'height="{LH}" width="0"><animate attributeName="width" '
                  f'from="0" to="{w_px:.1f}" begin="{delay:.2f}s" dur="0.40s" '
                  f'fill="freeze"/></rect></clipPath>')
-        safe = line.replace("&", "&amp;").replace("<", "&lt;")
-        p.append(f'<g clip-path="url(#{cid})"><text xml:space="preserve" '
-                 f'x="{pad_l}" y="{y + FS - 0.6:.1f}" class="d-f" '
-                 f'font-size="{FS}">{safe}</text></g>')
+        p.append(f'<g clip-path="url(#{cid})">')
+        for cls, line in (("q", gline), ("d-f", dline)):
+            if not line:
+                continue
+            safe = line.replace("&", "&amp;").replace("<", "&lt;")
+            p.append(f'<text xml:space="preserve" x="{pad_l}" '
+                     f'y="{y + FS - 0.6:.1f}" class="{cls}" '
+                     f'font-size="{FS}">{safe}</text>')
+        p.append('</g>')
 
     for r, lab in ((1, "mon"), (3, "wed"), (5, "fri")):
         p.append(label(pad_l - 7, pad_t + r * LH + FS - 0.6, lab, 9, "m-f",
