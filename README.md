@@ -1,155 +1,88 @@
 <div align="center">
 
-# Hi, I'm Hiten👋
+<img src="./ascii.svg" width="460" alt="Hiten Rohra"/>
 
-**Software Engineer · MS CS @ USC · Building things that scale**
+<img src="./stats.svg" width="620" alt="Contributions in the last year"/>
 
-[![Portfolio](https://img.shields.io/badge/🌐_Portfolio-hitenraju.com-blue?style=flat-square)](https://hitenraju.com)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-hiten--rohra-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com/in/hiten-rohra)
-[![Email](https://img.shields.io/badge/Email-hraju@usc.edu-EA4335?style=flat-square&logo=gmail)](mailto:hraju@usc.edu)
+[hitenraju.com](https://hitenraju.com) &nbsp;·&nbsp;
+[linkedin](https://linkedin.com/in/hiten-rohra) &nbsp;·&nbsp;
+[email](mailto:hraju@usc.edu)
 
 </div>
 
----
+<img src="./hd-about.svg" width="620" alt="about"/>
 
-## 🧑‍💻 About Me
+> Software engineer. MS CS at USC, in Los Angeles.<br>
+> I like the part of the problem where the latency budget stops being polite.
 
-I build backend systems that perform under pressure. 2+ years in production across microservices, distributed infra, and AI, always optimizing for reliability, speed, and the developer experience.
+Two years shipping production backends — five monoliths pulled apart into<br>
+twelve services, a monitoring platform that a hundred-odd engineers now open<br>
+before they open the logs, 99.9% uptime carried across enterprise accounts.<br>
+At USC through May 2027 for AI/ML and distributed systems, which in practice<br>
+means retrieval pipelines fast enough that nobody notices them.
 
-Currently pursuing my **Master's in CS at USC** (Aug 2025 – May 2027), doubling down on AI/ML and distributed systems.
+<img src="./hd-stack.svg" width="620" alt="stack"/>
 
-- 🎓 MS Computer Science @ **University of Southern California**
-- 🏆 **1st place** at TechWeek Hackathon (40+ teams)
-- 💼 Former Software Engineer @ **Computacenter** (UK, $9B+ revenue)
-- 📄 Published at **IRCICD'23**
-- 📍 Based in **Los Angeles, CA**
-- 🤝 Open to new grad opportunities for 2026-27
+<samp>python &nbsp; typescript &nbsp; javascript &nbsp; java &nbsp; c++ &nbsp; sql</samp><br>
+<samp>fastapi &nbsp; node &nbsp; spring boot &nbsp; django &nbsp; grpc &nbsp; graphql</samp><br>
+<samp>postgres &nbsp; redis &nbsp; kafka &nbsp; dynamodb &nbsp; supabase</samp><br>
+<samp>aws &nbsp; gcp &nbsp; kubernetes &nbsp; docker &nbsp; terraform</samp><br>
+<samp>tensorflow &nbsp; langchain &nbsp; rag &nbsp; vector search &nbsp; opencv</samp>
 
----
+<img src="./hd-projects.svg" width="620" alt="projects"/>
 
-## ⚡ Quick Wins
+**[DaySays](https://github.com/HitenRohra/DaySays)** &nbsp;·&nbsp; <samp>typescript, rag</samp><br>
+AI journaling app. A retrieval pipeline held to a sub-100ms p99, which is most<br>
+of why 7-day retention moved 30%. First place at TechWeek, out of 40+ teams.
+
+**[AI_Interview](https://github.com/HitenRohra/AI_Interview)** &nbsp;·&nbsp; <samp>python, rag</samp><br>
+Automated screening: reads the résumé, asks questions that follow from it,<br>
+scores the answers. 35% better answer precision and 60% fewer hallucinations<br>
+than the first cut, with latency taken from 4.2s down to 1.1s.
+
+**[AnomalyDetector](https://github.com/HitenRohra/AnomalyDetector)** &nbsp;·&nbsp; <samp>python, opencv</samp><br>
+Spots explosions, accidents and theft in video footage. 90%+ accuracy at<br>
+24 FPS on 45% less compute, which is what made it deployable at the edge.<br>
+Published at IRCICD'23.
+
+**[AI_Coding_Assistant](https://github.com/HitenRohra/AI_Coding_Assistant)** &nbsp;·&nbsp; <samp>python</samp><br>
+A Cursor-shaped coding assistant that never leaves the terminal.
+
+<img src="./hd-stats.svg" width="620" alt="stats"/>
 
 <div align="center">
 
-| 100+ | 350+ | 2+ |
-|:----:|:----:|:--:|
-| Engineers using my monitoring platform | LeetCode problems solved | Years shipping at scale |
+<img src="./streak.svg" width="620" alt="Current and longest streak"/>
+
+<img src="./langs.svg" width="620" alt="Top languages by bytes and by repo"/>
+
+<img src="./year.svg" width="620" alt="The last year, one character per day"/>
 
 </div>
 
----
+<img src="./hd-colophon.svg" width="620" alt="colophon"/>
 
-## 🛠️ Tech Stack
+Nothing on this page loads from anyone else's server. `ascii.svg` is a photo<br>
+pushed through a 13-character ramp by<br>
+[`scripts/make_portrait.py`](scripts/make_portrait.py); the stat graphics and<br>
+these section headings are drawn straight from the GitHub GraphQL API by<br>
+[a scheduled action](.github/workflows/stats.yml), once a day, committing only<br>
+the files that actually changed.
 
-**Languages**
+Everything animates with SMIL from inside the SVG, because GitHub strips<br>
+`<script>` from READMEs. The headings are images for the same reason — GitHub<br>
+also strips CSS, so an image is the only way to put this page's own typeface<br>
+on a heading. Since no third party is involved, nothing here can rate-limit,<br>
+break, or quietly go dark.
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=flat-square&logo=postgresql&logoColor=white)
+The face is [JetBrains Mono](scripts/fonts), subset to just the characters<br>
+each graphic draws and inlined as base64 — about 12 KB across the page rather<br>
+than 4.5 MB. That isn't only for looks: the portrait's grid assumes an advance<br>
+width of exactly 0.600 em, and a viewer whose default monospace is narrower<br>
+would otherwise see the whole thing squeezed.
 
-**Backend & APIs**
+Language totals cover public repositories only, so the numbers don't depend on<br>
+whose token ran the script. `year.svg` reuses the portrait's own ramp —<br>
+`:` `+` `#` `@`, quiet to loud.
 
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
-![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=flat-square&logo=graphql&logoColor=white)
-![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=flat-square&logo=springboot&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white)
-![gRPC](https://img.shields.io/badge/gRPC-244c5a?style=flat-square&logo=grpc&logoColor=white)
-
-**Data & Systems**
-
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
-![Kafka](https://img.shields.io/badge/Kafka-231F20?style=flat-square&logo=apachekafka&logoColor=white)
-![DynamoDB](https://img.shields.io/badge/DynamoDB-4053D6?style=flat-square&logo=amazondynamodb&logoColor=white)
-
-**Cloud & DevOps**
-
-![AWS](https://img.shields.io/badge/AWS-FF9900?style=flat-square&logo=amazonaws&logoColor=white)
-![GCP](https://img.shields.io/badge/GCP-4285F4?style=flat-square&logo=googlecloud&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=flat-square&logo=terraform&logoColor=white)
-
-**AI / ML**
-
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-1C3C58?style=flat-square)
-![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikitlearn&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white)
-![Hugging Face](https://img.shields.io/badge/Hugging_Face-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
-![RAG](https://img.shields.io/badge/RAG-0A0A0A?style=flat-square&logoColor=white)
-![Vector DB](https://img.shields.io/badge/Vector_DB-6C4EF3?style=flat-square&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
-![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
-
----
-
-## 🚀 Featured Projects
-
-### 🏆 [Day Says](https://github.com/HitenRohra/DaySays) — AI Journaling App
-> **1st place** out of 40+ teams at TechWeek Hackathon · Built in 48 hours
-
-- RAG pipeline embeds entries as vectors in Supabase, retrieves semantically similar past entries, and generates mood-aware personalized responses
-- Achieved **sub-100ms p99 latency** and **30% lift in 7-day retention**
-- Post-hackathon: onboarded **20+ beta users** with zero infrastructure changes
-
-`React` `TypeScript` `Node.js` `GraphQL` `Supabase` `Gemini API`
-
----
-
-### 🤖 [AI Interview & Screening Platform](https://github.com/HitenRohra/AI_Interview)
-> RAG-powered interview system grounded in resume and JD content
-
-- LangChain conversational state for contextual follow-ups — **35% better answer precision**, **60% lower hallucination rate** vs. prompt-only baseline
-- Optimized chunking, embedding selection, and KV-cache-aware prompting to cut p95 latency from **4.2s → 1.1s**
-
-`Python` `TypeScript` `React` `GraphQL` `LangChain`
-
----
-
-### 🎥 [Video Anomaly Detector](https://github.com/HitenRohra/AnomalyDetector)
-> Published at IRCICD'23
-
-- Multipath frame-prediction CNN — **90%+ accuracy** across 8 anomaly classes at 24 FPS
-- Adaptive frame sampling cut inference compute by **45%**, enabling edge deployment at **sub-200ms** on commodity hardware, no GPU required
-
-`Python` `CNN` `OpenCV` `TensorFlow`
-
----
-
-### 💬 [Lets_Chat](https://github.com/HitenRohra/Lets_Chat)
-> Real-time MERN stack chat application
-
-- Live messaging with Socket.IO, modern UI, and full authentication
-
-`MongoDB` `Express` `React` `Node.js` `Socket.IO`
-
----
-## 🐍 Snake eating my contributions
-![Snake eating contributions](https://raw.githubusercontent.com/HitenRohra/HitenRohra/output/github-contribution-grid-snake-dark.svg)
-
----
-
-## 🏅 Highlights
-
-🥇 **TechWeek Hackathon** — 1st Place out of 40+ teams  
-📄 **IRCICD'23** — Published research on video anomaly detection  
-🏗️ **Microservices Migration** — Shipped 5 monoliths → 12-service architecture, 15× faster deploys  
-📊 **Fortune 500 Reliability** — 99.9% uptime across multinational enterprise accounts  
-💰 **Cost Savings** — $2K/month cloud savings via DB query optimization  
-
----
-
-<div align="center">
-
-*"Ship fast, measure everything, iterate relentlessly."*
-
-**Let's connect — always happy to talk systems, AI, or a good hackathon.**
-
-[![LinkedIn](https://img.shields.io/badge/Let's_connect-LinkedIn-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/hiten-rohra)
-
-</div>
+<sub>Built by following <a href="https://agreeable-credit-859.notion.site/A-GitHub-profile-that-generates-itself-3abedfe9a65a81e4afc9daed90cb4e7e">A GitHub profile that generates itself</a> by <a href="https://github.com/andriidrok1">Andrii Drok</a>.</sub>
